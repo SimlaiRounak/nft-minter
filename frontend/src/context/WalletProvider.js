@@ -5,8 +5,6 @@ import { toast } from "react-toastify";
 
 export const WalletContext = createContext();
 
-const CONTRACT_ADDRESS = "0x3B5744B13Eb120006E9D89433C7032eaed1F18E1";
-
 export const WalletProvider = ({ children }) => {
   const [wallet, setWallet] = useState(null);
   const [contract, setContract] = useState(null);
@@ -28,7 +26,7 @@ export const WalletProvider = ({ children }) => {
       localStorage.setItem("connectedWallet", address);
       
       const nftContract = new ethers.Contract(
-        CONTRACT_ADDRESS,
+        process.env.NEXT_PUBLIC_CONTRACT_ADDRESS,
         NFTContractABI.abi || NFTContractABI,
         signer
       );

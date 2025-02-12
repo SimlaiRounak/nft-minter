@@ -34,19 +34,20 @@ npm install
 
 ### 3. Configure Environment Variables
 Create a `.env.local` / `.env` file and add the required keys:
-* Root of the project
+* Root of the project `(.env)`
 ```env
 PRIVATE_KEY=wallet_private_key
 SEPOLIA_RPC_URL=https://eth-sepolia.g.alchemy.com/v2/your_api_key
 ```
 
-* Frontend `(./frontend)`
+* Frontend `(./frontend/.env.local)`
 ```env
 NEXT_PUBLIC_PINATA_API_KEY=your_pinata_api_key
 NEXT_PUBLIC_PINATA_SECRET_KEY=your_pinata_secret_key
+NEXT_PUBLIC_CONTRACT_ADDRESS==deployed_contract_address
 ```
 
-* Backend `(./backend)`
+* Backend `(./backend/.env)`
 ```env
 MONGO_URI=your_mongodb_url
 SEPOLIA_RPC_URL=https://eth-sepolia.g.alchemy.com/v2/your_api_key
@@ -63,8 +64,20 @@ Compile and deploy:
 npm run compile
 npm run deploy
 ```
+### 5. Update the deployed contact address in frontend and backend env files
+* Frontend `(./frontend/.env.local)`
+```env
+...
+NEXT_PUBLIC_CONTRACT_ADDRESS==deployed_contract_address
+```
 
-### 5. Run the Frontend & Backend
+* Backend `(./backend/.env)`
+```env
+...
+CONTRACT_ADDRESS=deployed_contract_address
+```
+
+### 6. Run the Frontend & Backend
 ```sh
 cd ./frontend/
 npm run dev
